@@ -848,6 +848,16 @@ const postgresTypesBase = {
     defaultSize: 255,
     hasQuotes: true,
   },
+  ENUM: {
+    type: "ENUM",
+    checkDefault: (field) => {
+      return field.values.includes(field.default);
+    },
+    hasCheck: false,
+    isSized: false,
+    hasPrecision: false,
+    hasQuotes: true,
+  },
   TEXT: {
     type: "TEXT",
     checkDefault: (field) => {
@@ -1128,7 +1138,7 @@ const postgresTypesBase = {
     hasPrecision: false,
     hasQuotes: true,
   },
-  HALFVEC:{
+  HALFVEC: {
     type: "HALFVEC",
     checkDefault: (field) => {
       let elements;
